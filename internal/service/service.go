@@ -34,15 +34,16 @@ func New(d dao.Dao) (s *Service, cf func(), err error) {
 // SayHello grpc demo func.
 func (s *Service) SayHello(ctx context.Context, req *pb.HelloReq) (reply *empty.Empty, err error) {
 	reply = new(empty.Empty)
-	fmt.Printf("hello %s", req.Name)
+	fmt.Printf("hello %s \n", req.Name)
 	return
 }
 
 // HelloWorld grpc demo func.
 func (s *Service) HelloWorld(ctx context.Context, req *pb.HelloReq) (reply *pb.HelloResp, err error) {
-	reply = new(empty.Empty)
+	reply = new(pb.HelloResp)
 	fmt.Printf("hello %s", req.Name)
-	return
+	reply.Content = "success"
+	return reply, err
 }
 
 // SayHelloURL bm demo func.

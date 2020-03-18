@@ -4,7 +4,6 @@ import (
 	"flag"
 	"github.com/bilibili/kratos/pkg/conf/paladin"
 	"github.com/bilibili/kratos/pkg/log"
-	_ "google.golang.org/grpc"
 	"kratos-server-demo/internal/di"
 	"os"
 	"os/signal"
