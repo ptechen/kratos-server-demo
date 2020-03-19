@@ -5,6 +5,7 @@ import (
 	"github.com/bilibili/kratos/pkg/conf/paladin"
 	"github.com/bilibili/kratos/pkg/log"
 	"kratos-server-demo/internal/di"
+	signal2 "kratos-server-demo/internal/signal"
 	"os"
 	"os/signal"
 	"syscall"
@@ -28,6 +29,7 @@ func main() {
 		log.Info("get a signal %s", s.String())
 		switch s {
 		case syscall.SIGQUIT, syscall.SIGTERM, syscall.SIGINT:
+			close(signal2.ExitChan)
 			closeFunc()
 			log.Info("demo exit")
 			time.Sleep(time.Second)
