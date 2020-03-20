@@ -28,7 +28,7 @@ func New(s pb.DemoServer) (engine *bm.Engine, err error) {
 	engine = bm.DefaultServer(&cfg)
 	pb.RegisterDemoBMServer(engine, s)
 	initRouter(engine)
-	err = engine.Start()
+	go engine.RunTLS(cfg.Addr, "./configs/certs/server.pem", "./configs/certs/server.key")
 	return
 }
 
